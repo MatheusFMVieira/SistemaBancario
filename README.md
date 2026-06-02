@@ -290,33 +290,3 @@ Saque de R$ 200
 Saldo atual: R$ 800
 =============================
 ```
-
----
-
-## O que NÃO é possível fazer?
-
-Algumas coisas que o sistema **protege** você de fazer:
-
-| O que | Por quê |
-|------|-------|
-| Sacar mais do que tem | Você não tem dinheiro suficiente |
-| Transferir para uma conta que não existe | A conta não está registrada no banco |
-| Depositar valor negativo | Não faz sentido depositar "-100" |
-| Sacar valor 0 | Não há operação |
-
-O sistema é **inteligente** e avisa quando você tenta fazer algo errado.
-
----
-
-## Resumo das principais idéias
-
-| Conceito | Explicação Simples |
-|----------|-------------------|
-| **Cliente** | Uma pessoa (nome, CPF, email) |
-| **Conta** | Onde o dinheiro fica guardado |
-| **Saldo** | Quanto dinheiro tem agora |
-| **Operação/Transação** | Algo que acontece (saque, depósito, transferência) |
-| **Histórico** | O registro de tudo que aconteceu |
-| **Banco** | Quem controla tudo e guarda as contas |
-
----
