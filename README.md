@@ -1,9 +1,3 @@
-# Documentação do Sistema Bancário - Para Iniciantes
-
-> **Atenção:** Esse documento foi escrito para pessoas que NÃO entendem de programação. Se você entende código, veja a documentação técnica.
-
----
-
 ## O que é esse projeto?
 
 Imagine que você está criando um **mini banco digital**. Esse sistema permite que as pessoas:
