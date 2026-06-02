@@ -1,7 +1,9 @@
 package interfaces;
 
+import entities.Conta;
+
 public interface OperacaoBancaria {
-    void depositar();
-    void sacar();
-    void transferir();
+    void depositar(double valor);
+    boolean sacar(double valor);
+    void transferir(double valor, Conta contaDestino);
 }

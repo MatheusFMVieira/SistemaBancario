@@ -3,6 +3,7 @@ package entities;
 import java.util.ArrayList;
 import java.util.List;
 
+import anums.TipoTransacao;
 import interfaces.OperacaoBancaria;
 
 public abstract class Conta implements OperacaoBancaria{
@@ -18,24 +19,59 @@ public abstract class Conta implements OperacaoBancaria{
         }
 
         @Override
-        public abstract void sacar();
-
-        @Override
-        public void depositar() {
-
+        public boolean sacar(double valor){
+                if(valor <= getSaldo()){
+                        removerSaldo(valor);
+                        return true;
+                }
+                return false;
         }
 
         @Override
-        public void transferir() {
-
+        public void depositar(double valor) {
+                adcionarSaldo(valor);
         }
 
-        public void extrato(){
+        @Override
+        public void transferir(double valor, Conta contaDestino) {
+                if (this.sacar(valor)) {
 
+                        contaDestino.depositar(valor);
+
+                        this.historico.add(new Transacao(
+                        1,
+                        valor,
+                        TipoTransacao.TRANSFERENCIA,
+                        "Transferência enviada"
+                        ));
+
+                        contaDestino.getHistorico().add(new Transacao(
+                        2,
+                        valor,
+                        TipoTransacao.TRANSFERENCIA,
+                        "Transferência recebida"
+                        ));
+
+                } else {
+                        System.out.println("Transferência negada");
+                }
+        }
+
+        public void extrato() {
+                System.out.println("===== EXTRATO BANCÁRIO =====");
+                System.out.println("Titular: " + titular.getNome());
+                System.out.println("Conta: " + numero);
+                System.out.println("-----------------------------");
+                for (Transacao t : historico) {
+                        System.out.println(t);
+                }
+                System.out.println("-----------------------------");
+                System.out.println("Saldo atual: " + saldo);
+                System.out.println("=============================");
         }
 
         public void consultarSaldo(){
-
+                System.out.println("Saldo da conta " + numero + ": R$ " + saldo);
         }
 
         public int getNumero() {
@@ -54,7 +90,7 @@ public abstract class Conta implements OperacaoBancaria{
                 return historico;
         }
 
-        protected void adicionarSaldo(double valor){
+        protected void adcionarSaldo(double valor){
                 saldo += valor;
         }
 
